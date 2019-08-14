@@ -20,7 +20,15 @@ type UpdateReleasesAction = {
   payload: Release[],
 };
 
+type GetReleasesAction = {
+  type: 'GET_RELEASES',
+};
+export const getReleases = (): GetReleasesAction => ({
+  type: 'GET_RELEASES',
+});
+
 export type Action =
   | SetDisplayTypeAction
   | SetLoadingAction
-  | UpdateReleasesAction;
+  | UpdateReleasesAction
+  | GetReleasesAction;
