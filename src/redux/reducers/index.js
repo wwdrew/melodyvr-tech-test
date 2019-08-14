@@ -13,28 +13,22 @@ type Product = {
   accent_colour_code: string,
   background_colour_code: string,
   text_colour_code: string,
-  production_type_code: 'production' | 'original',
+  production_type_code: 'performance' | 'original',
   price?: string,
 };
 
-type Release = {
+export type Release = {
   feature_order: number,
   is_free: boolean,
   product: Product,
 };
 
-type Result = {
-  result: {
-    releases: Release[],
-  },
-};
-
-type DisplayType = 'grid' | 'carousel';
+export type DisplayType = 'grid' | 'carousel';
 
 export type State = {
   display: DisplayType,
   loading: boolean,
-  data: Result,
+  releases: Release[],
 };
 
 const initialState: State = {};
@@ -43,6 +37,12 @@ const rootReducer = (state: State = initialState, action: Action) => {
   switch (action.type) {
     case 'SET_DISPLAY_TYPE':
       return setDisplayType(state, action.display);
+
+    case 'SET_LOADING':
+      return setLoading(state, action.value);
+
+    case 'UPDATE_RELEASES':
+      return updateReleases(state, action.payload);
 
     default:
       return state;
@@ -54,4 +54,14 @@ export default rootReducer;
 const setDisplayType = (state: State, display: DisplayType): State => ({
   ...state,
   display,
+});
+
+const setLoading = (state: State, loading: boolean): State => ({
+  ...state,
+  loading,
+});
+
+const updateReleases = (state: State, releases: Release[]): State => ({
+  ...state,
+  releases,
 });
