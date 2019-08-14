@@ -28,12 +28,15 @@ export type DisplayType = 'grid' | 'carousel';
 export type State = {
   display: DisplayType,
   loading: boolean,
-  releases: Release[],
+  releases?: Release[],
 };
 
-const initialState: State = {};
+const initialState: State = {
+  display: 'grid',
+  loading: false,
+};
 
-const rootReducer = (state: State = initialState, action: Action) => {
+const rootReducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case 'SET_DISPLAY_TYPE':
       return setDisplayType(state, action.display);
