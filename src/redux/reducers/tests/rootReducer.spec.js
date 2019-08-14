@@ -23,6 +23,7 @@ describe('root reducer', () => {
     };
 
     const expected = initialState;
+    // $FlowFixMe
     const actual = rootReducer(initialState, unknownAction);
 
     expect(actual).toStrictEqual(expected);
