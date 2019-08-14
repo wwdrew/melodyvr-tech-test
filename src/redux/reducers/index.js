@@ -29,7 +29,7 @@ export type State = {
   display: DisplayType,
   loading: boolean,
   allReleases?: number[],
-  releasesByOrder?: {[id: number]: Release},
+  releasesByOrder?: {[id: string]: Release},
 };
 
 const initialState: State = {
