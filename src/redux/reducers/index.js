@@ -28,12 +28,13 @@ export type DisplayType = 'grid' | 'carousel';
 export type State = {
   display: DisplayType,
   loading: boolean,
-  releases?: Release[],
+  allReleases?: number[],
+  releasesByOrder?: {[id: number]: Release},
 };
 
 const initialState: State = {
   display: 'grid',
-  loading: false,
+  loading: true,
 };
 
 const rootReducer = (state: State = initialState, action: Action): State => {
@@ -66,5 +67,11 @@ const setLoading = (state: State, loading: boolean): State => ({
 
 const updateReleases = (state: State, releases: Release[]): State => ({
   ...state,
-  releases,
+  loading: false,
+  allReleases: releases.map(release => release.feature_order),
+  releasesByOrder: releases.reduce((allReleases, release) => {
+    allReleases[release.feature_order] = release;
+
+    return allReleases;
+  }, {}),
 });

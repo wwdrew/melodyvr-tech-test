@@ -12,7 +12,6 @@ import type {Action} from '../../actions';
 const initialState: State = {
   display: 'grid',
   loading: false,
-  releases: [],
 };
 
 describe('root reducer', () => {
@@ -70,9 +69,22 @@ describe('root reducer', () => {
         payload: releaseFixtures,
       };
 
-      const expected = {
+      const expected: State = {
         ...initialState,
-        releases: releaseFixtures,
+        allReleases: [
+          releaseFixtures[0].feature_order,
+          releaseFixtures[1].feature_order,
+          releaseFixtures[2].feature_order,
+          releaseFixtures[3].feature_order,
+          releaseFixtures[4].feature_order,
+        ],
+        releasesByOrder: {
+          '1': releaseFixtures[3],
+          '2': releaseFixtures[1],
+          '4': releaseFixtures[0],
+          '5': releaseFixtures[4],
+          '6': releaseFixtures[2],
+        },
       };
       const actual = rootReducer(initialState, action);
 
