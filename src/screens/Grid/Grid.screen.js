@@ -4,28 +4,21 @@
  */
 
 import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
 
 import {GridTemplate} from '../../components/templates';
 
-import type {State} from '../../redux/reducers';
+import type {Release} from '../../redux/reducers';
 
-type Props = MappedProps;
+type Props = {
+  releases: Release[],
+};
 
 class GridScreen extends PureComponent<Props> {
   render() {
-    const {loading} = this.props;
+    const {releases} = this.props;
 
-    return <GridTemplate loading={loading} />;
+    return <GridTemplate releases={releases} />;
   }
 }
 
-type MappedProps = {
-  loading: boolean,
-};
-
-const mapStateToProps = (state: State) => ({
-  loading: state.loading,
-});
-
-export default connect(mapStateToProps)(GridScreen);
+export default GridScreen;

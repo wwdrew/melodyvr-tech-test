@@ -7,11 +7,13 @@ import React from 'react';
 import {Text} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 
+import type {Release} from '../../../redux/reducers';
+
 type Props = {
-  loading: boolean,
+  releases: Release[],
 };
 
-const GridTemplate = ({loading}: Props) => (
+const GridTemplate = ({releases}: Props) => (
   <SafeAreaView>
     <Text>Grid Screen</Text>
   </SafeAreaView>

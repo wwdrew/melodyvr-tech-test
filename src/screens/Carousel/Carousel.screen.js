@@ -3,25 +3,22 @@
  * @flow
  */
 
-import React from 'react';
-import {connect} from 'react-redux';
+import React, {PureComponent} from 'react';
 
 import {CarouselTemplate} from '../../components/templates';
 
-import type {State} from '../../redux/reducers';
+import type {Release} from '../../redux/reducers';
 
-type Props = MappedProps;
-
-const CarouselScreen = ({loading}: Props) => (
-  <CarouselTemplate loading={loading} />
-);
-
-type MappedProps = {
-  loading: boolean,
+type Props = {
+  releases: Release[],
 };
 
-const mapStateToProps = (state: State) => ({
-  loading: state.loading,
-});
+class CarouselScreen extends PureComponent<Props> {
+  render() {
+    const {releases} = this.props;
 
-export default connect(mapStateToProps)(CarouselScreen);
+    return <CarouselTemplate releases={releases} />;
+  }
+}
+
+export default CarouselScreen;

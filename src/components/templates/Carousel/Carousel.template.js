@@ -7,11 +7,13 @@ import React from 'react';
 import {Text} from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 
+import type {Release} from '../../../redux/reducers';
+
 type Props = {
-  loading: boolean,
+  releases: Release[],
 };
 
-const CarouselTemplate = ({loading}: Props) => (
+const CarouselTemplate = ({releases}: Props) => (
   <SafeAreaView>
     <Text>Carousel Screen</Text>
   </SafeAreaView>
