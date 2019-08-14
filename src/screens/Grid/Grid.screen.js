@@ -3,28 +3,29 @@
  * @flow
  */
 
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import {Text} from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
 
-import type {DisplayType, State} from '../../redux/reducers';
+import {GridTemplate} from '../../components/templates';
+
+import type {State} from '../../redux/reducers';
 
 type Props = MappedProps;
 
-const GridScreen = ({display}: Props) => (
-  <SafeAreaView>
-    <Text>Grid Screen</Text>
-    <Text>Display: {display}</Text>
-  </SafeAreaView>
-);
+class GridScreen extends PureComponent<Props> {
+  render() {
+    const {loading} = this.props;
+
+    return <GridTemplate loading={loading} />;
+  }
+}
 
 type MappedProps = {
-  display: DisplayType,
+  loading: boolean,
 };
 
 const mapStateToProps = (state: State) => ({
-  display: state.display,
+  loading: state.loading,
 });
 
 export default connect(mapStateToProps)(GridScreen);
