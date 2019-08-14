@@ -4,8 +4,15 @@
  */
 
 import React from 'react';
-import {GridScreen} from './screens';
+import {Provider} from 'react-redux';
 
-const MelodyVRTest = () => <GridScreen />;
+import {GridScreen} from './screens';
+import store from './redux/store';
+
+const MelodyVRTest = () => (
+  <Provider store={store}>
+    <GridScreen />
+  </Provider>
+);
 
 export default MelodyVRTest;
