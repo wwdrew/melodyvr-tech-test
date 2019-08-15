@@ -5,6 +5,7 @@
 
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
+import {normaliseRelease} from '../../helpers/releases';
 
 import type {Release} from '../reducers';
 
@@ -26,7 +27,10 @@ function* getReleases() {
     );
     yield call(console.log, result);
 
-    yield put({type: 'UPDATE_RELEASES', payload: result.releases});
+    yield put({
+      type: 'UPDATE_RELEASES',
+      payload: result.releases.map(normaliseRelease),
+    });
   } catch (error) {
     yield call(console.log, error);
   }
