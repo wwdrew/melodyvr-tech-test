@@ -11,12 +11,8 @@ const DEFAULT_PRODUCT = {
   title: "The greatest gig you've ever been to",
   description:
     'You know that awesome gig you went to that time? This one is even better!',
-  // FIXME: obviously this would go to a generic image but this will do for now
-  image_hero_url:
-    'https://d17jafawxl91z1.cloudfront.net/IMD_P0129_IMG_Hero.jpg',
-  // FIXME: obviously this would go to a generic image but this will do for now
-  image_landscape_url:
-    'https://d17jafawxl91z1.cloudfront.net/IMD_P0129_IMG_Landscape.jpg',
+  image_hero_url: 'https://d17jafawxl91z1.cloudfront.net/placeholder.jpg',
+  image_landscape_url: 'https://d17jafawxl91z1.cloudfront.net/placeholder.jpg',
   accent_colour_code: 'F52459',
   background_colour_code: '1e1e1e',
   text_colour_code: 'ffffff',
