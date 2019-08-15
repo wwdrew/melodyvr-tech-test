@@ -5,7 +5,7 @@
 
 import React from 'react';
 import {FlatGrid} from 'react-native-super-grid';
-import GridRelease from '../../molecules/GridRelease';
+import GridRelease from '../../releases/GridRelease';
 
 import type {Release} from '../../../redux/reducers';
 

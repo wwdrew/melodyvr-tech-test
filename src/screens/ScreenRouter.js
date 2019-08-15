@@ -11,8 +11,8 @@ import Modal from 'react-native-modal';
 import {CarouselTemplate, GridTemplate} from '../components/templates';
 import Loading from '../components/atoms/Loading';
 import {getReleases} from '../redux/actions';
-import TabDisplay from '../components/molecules/TabDisplay';
-import ReleaseDetail from '../components/organisms/ReleaseDetail';
+import TabDisplay from '../components/layout/TabDisplay';
+import ReleaseDetail from '../components/releases/ReleaseDetail';
 
 import type {ViewStyleProp} from 'StyleSheet';
 import type {DisplayType, Release, State as AppState} from '../redux/reducers';
@@ -21,12 +21,13 @@ type Props = MappedProps & MappedDispatch;
 
 type State = {
   selectedTab: number,
-  selectedRelease?: number,
+  selectedRelease: ?number,
 };
 
 class ScreenRouter extends PureComponent<Props, State> {
   state = {
     selectedTab: 0,
+    selectedRelease: undefined,
   };
 
   componentDidMount() {
@@ -39,6 +40,10 @@ class ScreenRouter extends PureComponent<Props, State> {
 
   handleReleaseSelection = (selectedRelease: number) => {
     this.setState({selectedRelease});
+  };
+
+  handleSelectedTab = (selectedTab: number) => {
+    this.setState({selectedTab});
   };
 
   render() {
@@ -54,7 +59,7 @@ class ScreenRouter extends PureComponent<Props, State> {
         <TabDisplay
           style={styles.tabs}
           selected={selectedTab}
-          onUpdate={selectedTab => this.setState({selectedTab})}>
+          onUpdate={this.handleSelectedTab}>
           <TabDisplay.Tab label="Grid">
             <GridTemplate
               releases={releases}
@@ -68,7 +73,7 @@ class ScreenRouter extends PureComponent<Props, State> {
         <Modal isVisible={!!selectedRelease}>
           {!!selectedRelease && (
             <ReleaseDetail
-              release={releasesByOrder[selectedRelease]}
+              release={releasesByOrder[`${selectedRelease}`]}
               closeModal={this.handleCloseModal}
             />
           )}
@@ -102,6 +107,7 @@ const mapDispatchToProps = {
   getReleases,
 };
 
+// $FlowFixMe
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
