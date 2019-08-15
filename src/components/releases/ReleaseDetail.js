@@ -27,7 +27,7 @@ const ReleaseDetail = ({closeModal, release}: Props) => (
         {backgroundColor: `#${release.product.background_colour_code}`},
       ]}>
       <Image
-        source={{uri: release.product.image_landscape_url}}
+        source={{uri: release.product.image_hero_url}}
         style={styles.image}
       />
       <View style={styles.textContent}>
