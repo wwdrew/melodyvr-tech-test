@@ -45,7 +45,10 @@ class ScreenRouter extends PureComponent<Props, State> {
           selected={selectedTab}
           onUpdate={selectedTab => this.setState({selectedTab})}>
           <TabDisplay.Tab label="Grid">
-            <GridTemplate releases={releases} />
+            <GridTemplate
+              releases={releases}
+              onPress={id => console.log(`grid template selected: ${id}`)}
+            />
           </TabDisplay.Tab>
           <TabDisplay.Tab label="Carousel">
             <CarouselTemplate releases={releases} />
