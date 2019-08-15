@@ -7,10 +7,12 @@ import React, {PureComponent} from 'react';
 import {StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import SafeAreaView from 'react-native-safe-area-view';
+import Modal from 'react-native-modal';
 import {CarouselTemplate, GridTemplate} from '../components/templates';
 import Loading from '../components/atoms/Loading';
 import {getReleases} from '../redux/actions';
 import TabDisplay from '../components/molecules/TabDisplay';
+import ReleaseDetail from '../components/organisms/ReleaseDetail';
 
 import type {ViewStyleProp} from 'StyleSheet';
 import type {DisplayType, Release, State as AppState} from '../redux/reducers';
@@ -19,6 +21,7 @@ type Props = MappedProps & MappedDispatch;
 
 type State = {
   selectedTab: number,
+  selectedRelease?: number,
 };
 
 class ScreenRouter extends PureComponent<Props, State> {
@@ -30,9 +33,17 @@ class ScreenRouter extends PureComponent<Props, State> {
     this.props.getReleases();
   }
 
+  handleCloseModal = () => {
+    this.setState({selectedRelease: undefined});
+  };
+
+  handleReleaseSelection = (selectedRelease: number) => {
+    this.setState({selectedRelease});
+  };
+
   render() {
-    const {loading, releases} = this.props;
-    const {selectedTab} = this.state;
+    const {loading, releases, releasesByOrder} = this.props;
+    const {selectedTab, selectedRelease} = this.state;
 
     if (loading) {
       return <Loading />;
@@ -47,13 +58,21 @@ class ScreenRouter extends PureComponent<Props, State> {
           <TabDisplay.Tab label="Grid">
             <GridTemplate
               releases={releases}
-              onPress={id => console.log(`grid template selected: ${id}`)}
+              onPress={this.handleReleaseSelection}
             />
           </TabDisplay.Tab>
           <TabDisplay.Tab label="Carousel">
             <CarouselTemplate releases={releases} />
           </TabDisplay.Tab>
         </TabDisplay>
+        <Modal isVisible={!!selectedRelease}>
+          {!!selectedRelease && (
+            <ReleaseDetail
+              release={releasesByOrder[selectedRelease]}
+              closeModal={this.handleCloseModal}
+            />
+          )}
+        </Modal>
       </SafeAreaView>
     );
   }
@@ -62,12 +81,14 @@ class ScreenRouter extends PureComponent<Props, State> {
 type MappedProps = {
   display: DisplayType,
   loading: boolean,
+  releasesByOrder: {[id: string]: Release},
   releases: Release[],
 };
 
 const mapStateToProps = (state: AppState) => ({
   display: state.display,
   loading: state.loading,
+  releasesByOrder: state.releasesByOrder,
   releases:
     state.allReleases &&
     state.allReleases.map(releaseOrder => state.releasesByOrder[releaseOrder]),

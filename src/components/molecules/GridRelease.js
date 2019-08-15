@@ -66,7 +66,7 @@ const styles: {
     height: '100%',
   },
   overlay: {
-    opacity: 0.3,
+    opacity: 0.4,
     position: 'absolute',
     top: 0,
     left: 0,
@@ -74,6 +74,7 @@ const styles: {
     height: '100%',
   },
   title: {
+    fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
   },
