@@ -7,7 +7,7 @@ import React from 'react';
 import Carousel from '../../layout/Carousel';
 import CarouselRelease from '../../releases/CarouselRelease';
 
-import type {Release} from '../../../redux/reducers';
+import type {Release} from '../../../types/releases';
 
 type Props = {
   releases: Release[],

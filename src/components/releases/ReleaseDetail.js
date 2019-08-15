@@ -9,7 +9,7 @@ import HTML from 'react-native-render-html';
 import FreeTag from '../atoms/FreeTag';
 
 import type {ImageStyleProp, TextStyleProp, ViewStyleProp} from 'StyleSheet';
-import type {Release} from '../../redux/reducers';
+import type {Release} from '../../types/releases';
 
 type Props = {
   release: Release,

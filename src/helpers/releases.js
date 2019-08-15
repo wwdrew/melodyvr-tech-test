@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type {Release, Product} from '../redux/reducers';
+import type {Release, Product} from '../types/releases';
 
 const DEFAULT_PRODUCT = {
   // FIXME: use a UUID or something that's more likely to be unique

@@ -7,7 +7,7 @@ import React from 'react';
 import {FlatGrid} from 'react-native-super-grid';
 import GridRelease from '../../releases/GridRelease';
 
-import type {Release} from '../../../redux/reducers';
+import type {Release} from '../../../types/releases';
 
 type Props = {
   releases: Release[],

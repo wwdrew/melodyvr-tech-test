@@ -8,7 +8,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FreeTag from '../atoms/FreeTag';
 
 import type {TextStyleProp, ViewStyleProp} from 'StyleSheet';
-import type {Release} from '../../redux/reducers';
+import type {Release} from '../../types/releases';
 
 type Props = {
   onPress: (id: number) => mixed,

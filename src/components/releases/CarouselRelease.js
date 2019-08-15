@@ -15,7 +15,7 @@ import {
 import FreeTag from '../atoms/FreeTag';
 
 import type {ImageStyleProp, TextStyleProp, ViewStyleProp} from 'StyleSheet';
-import type {Release} from '../../redux/reducers';
+import type {Release} from '../../types/releases';
 
 const {width: screenWidth} = Dimensions.get('window');
 const width = screenWidth - 25;

@@ -15,7 +15,8 @@ import TabDisplay from '../components/layout/TabDisplay';
 import ReleaseDetail from '../components/releases/ReleaseDetail';
 
 import type {ViewStyleProp} from 'StyleSheet';
-import type {Release, State as AppState} from '../redux/reducers';
+import type {Release} from '../types/releases';
+import type {State as AppState} from '../redux/reducers';
 
 type Props = MappedProps & MappedDispatch;
 

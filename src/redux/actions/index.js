@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type {Release} from '../reducers';
+import type {Release} from '../../types/releases';
 
 type SetLoadingAction = {
   type: 'SET_LOADING',

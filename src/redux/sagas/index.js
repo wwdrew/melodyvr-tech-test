@@ -8,7 +8,7 @@ import axios from 'axios';
 import {normaliseRelease} from '../../helpers/releases';
 import sortBy from 'lodash.sortby';
 
-import type {Release} from '../reducers';
+import type {Release} from '../../types/releases';
 
 type GetReleasesResultType = {
   data: {
