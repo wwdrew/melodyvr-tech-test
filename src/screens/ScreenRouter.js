@@ -67,7 +67,10 @@ class ScreenRouter extends PureComponent<Props, State> {
             />
           </TabDisplay.Tab>
           <TabDisplay.Tab label="Carousel">
-            <CarouselTemplate releases={releases} />
+            <CarouselTemplate
+              releases={releases}
+              onPress={this.handleReleaseSelection}
+            />
           </TabDisplay.Tab>
         </TabDisplay>
         <Modal isVisible={!!selectedRelease}>

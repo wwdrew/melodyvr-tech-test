@@ -4,18 +4,26 @@
  */
 
 import React from 'react';
-import {Text} from 'react-native';
+import Carousel from '../../layout/Carousel';
+import CarouselRelease from '../../releases/CarouselRelease';
 
 import type {Release} from '../../../redux/reducers';
 
 type Props = {
   releases: Release[],
+  onPress: (id: number) => mixed,
 };
 
-const CarouselTemplate = ({releases}: Props) => (
-  <>
-    <Text>Carousel Screen</Text>
-  </>
+const CarouselTemplate = ({onPress, releases}: Props) => (
+  <Carousel>
+    {releases.map(release => (
+      <CarouselRelease
+        key={release.feature_order}
+        release={release}
+        onPress={onPress}
+      />
+    ))}
+  </Carousel>
 );
 
 export default CarouselTemplate;
