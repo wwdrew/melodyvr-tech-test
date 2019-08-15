@@ -6,6 +6,7 @@
 import {all, call, put, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
 import {normaliseRelease} from '../../helpers/releases';
+import sortBy from 'lodash.sortby';
 
 import type {Release} from '../reducers';
 
@@ -29,7 +30,7 @@ function* getReleases() {
 
     yield put({
       type: 'UPDATE_RELEASES',
-      payload: result.releases.map(normaliseRelease),
+      payload: sortBy(result.releases.map(normaliseRelease), 'feature_order'),
     });
   } catch (error) {
     yield call(console.log, error);
