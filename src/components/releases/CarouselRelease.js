@@ -4,21 +4,11 @@
  */
 
 import React from 'react';
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FreeTag from '../atoms/FreeTag';
 
 import type {ImageStyleProp, TextStyleProp, ViewStyleProp} from 'StyleSheet';
 import type {Release} from '../../types/releases';
-
-const {width: screenWidth} = Dimensions.get('window');
-const width = screenWidth - 25;
 
 type Props = {
   onPress: (id: number) => mixed,
@@ -56,8 +46,6 @@ const CarouselRelease = ({onPress, release}: Props) => (
     </TouchableOpacity>
   </View>
 );
-
-CarouselRelease.WIDTH = width;
 
 export default CarouselRelease;
 
