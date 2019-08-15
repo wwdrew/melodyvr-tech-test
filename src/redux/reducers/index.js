@@ -4,6 +4,7 @@
  */
 
 import type {Action} from '../actions';
+
 export type Product = {
   id: number,
   title: string,
@@ -23,25 +24,18 @@ export type Release = {
   product: Product,
 };
 
-export type DisplayType = 'grid' | 'carousel';
-
 export type State = {
-  display: DisplayType,
   loading: boolean,
   allReleases?: number[],
   releasesByOrder?: {[id: string]: Release},
 };
 
 const initialState: State = {
-  display: 'grid',
   loading: true,
 };
 
 const rootReducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
-    case 'SET_DISPLAY_TYPE':
-      return setDisplayType(state, action.display);
-
     case 'SET_LOADING':
       return setLoading(state, action.value);
 
@@ -54,11 +48,6 @@ const rootReducer = (state: State = initialState, action: Action): State => {
 };
 
 export default rootReducer;
-
-const setDisplayType = (state: State, display: DisplayType): State => ({
-  ...state,
-  display,
-});
 
 const setLoading = (state: State, loading: boolean): State => ({
   ...state,

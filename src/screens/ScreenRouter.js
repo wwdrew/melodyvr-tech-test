@@ -15,7 +15,7 @@ import TabDisplay from '../components/layout/TabDisplay';
 import ReleaseDetail from '../components/releases/ReleaseDetail';
 
 import type {ViewStyleProp} from 'StyleSheet';
-import type {DisplayType, Release, State as AppState} from '../redux/reducers';
+import type {Release, State as AppState} from '../redux/reducers';
 
 type Props = MappedProps & MappedDispatch;
 
@@ -87,14 +87,12 @@ class ScreenRouter extends PureComponent<Props, State> {
 }
 
 type MappedProps = {
-  display: DisplayType,
   loading: boolean,
   releasesByOrder: {[id: string]: Release},
   releases: Release[],
 };
 
 const mapStateToProps = (state: AppState) => ({
-  display: state.display,
   loading: state.loading,
   releasesByOrder: state.releasesByOrder,
   releases:

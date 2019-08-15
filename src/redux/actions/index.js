@@ -3,12 +3,7 @@
  * @flow
  */
 
-import type {DisplayType, Release} from '../reducers';
-
-type SetDisplayTypeAction = {
-  type: 'SET_DISPLAY_TYPE',
-  display: DisplayType,
-};
+import type {Release} from '../reducers';
 
 type SetLoadingAction = {
   type: 'SET_LOADING',
@@ -28,7 +23,6 @@ export const getReleases = (): GetReleasesAction => ({
 });
 
 export type Action =
-  | SetDisplayTypeAction
   | SetLoadingAction
   | UpdateReleasesAction
   | GetReleasesAction;

@@ -10,7 +10,6 @@ import type {State} from '../index';
 import type {Action} from '../../actions';
 
 const initialState: State = {
-  display: 'grid',
   loading: false,
 };
 
@@ -26,23 +25,6 @@ describe('root reducer', () => {
     const actual = rootReducer(initialState, unknownAction);
 
     expect(actual).toStrictEqual(expected);
-  });
-
-  describe('setting the display type', () => {
-    it('sets the current display type', () => {
-      const action = {
-        type: 'SET_DISPLAY_TYPE',
-        display: 'carousel',
-      };
-
-      const expected = {
-        ...initialState,
-        display: 'carousel',
-      };
-      const actual = rootReducer(initialState, action);
-
-      expect(actual).toStrictEqual(expected);
-    });
   });
 
   describe('setting loading state', () => {
