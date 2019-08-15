@@ -21,9 +21,14 @@ const styles: {
   text: TextStyleProp,
 } = StyleSheet.create({
   freeTag: {
-    backgroundColor: 'green',
+    flexDirection: 'row',
   },
   text: {
+    backgroundColor: 'green',
+    paddingVertical: 3,
+    paddingHorizontal: 5,
+    borderRadius: 3,
     color: '#ffffff',
+    fontWeight: 'bold',
   },
 });
